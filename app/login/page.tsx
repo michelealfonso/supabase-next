@@ -22,8 +22,6 @@ export default function LoginPage(){
         email: '',
     });
 
-    const [loading, setLoading] = useState(true);
-
 
     const supabase = createClientComponentClient();
 
@@ -31,7 +29,6 @@ export default function LoginPage(){
         async function getUser(){
             const {data: {user}}: any = await supabase.auth.getUser()
             setUser(user)
-            setLoading(false)
         }
 
         getUser();
@@ -69,11 +66,7 @@ export default function LoginPage(){
         setUser(user)
     }
 
-    console.log({loading, user})
-
-    if (loading){
-        return <h1>loading..</h1>
-    }
+    console.log({user})
 
     if (user){
         return (
